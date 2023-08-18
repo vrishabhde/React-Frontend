@@ -1,19 +1,21 @@
-
+import {Route,Routes} from "react-router-dom";
 import './App.css';
+import Home from "./Components/Home";
+import Register from "./Components/Register";
+import Login from "./Components/Login";
+import Counter from "./Components/Counter";
+
+
 
 function App() {
   return (
     <>
-   <div className='abcd'>
-    <img src=""/>
-    <h1>welcome</h1>
-    <form>
-      <input type='text' placeholder='name' id='name' /><br />
-      <input type='email' placeholder='email' id='email' /><br />
-      <input type='password' placeholder='password' id='password' /><br />
-      <input type='submit' value='register' />
-    </form>
-   </div> 
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      <Route exact path="/Register" element={<Register />} />
+      <Route exact path="/Login" element={<Login />} />
+      <Route exact path="/Counter" element={<Counter />}/>
+    </Routes>
    </>
   );
 }
