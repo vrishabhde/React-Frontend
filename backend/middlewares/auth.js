@@ -3,11 +3,13 @@ import users from "../models/user.js";
 
 export const check_register = async(req,res, next)=>{
     try {
-        const {username,email,password} =req.body;
+        const {username,email,password,confirm_password} =req.body;
         if(!username) return res.status(400).json({status:400, message:"username is required"});
         if(!email) return res.status(400).json({status:400, message:"email is required"});
         if(!password) return res.status(400).json({status:400, message:"password is required"});
-        if(password.length < 8)return res.status(400).json({status:400, message:"password should be of 8 characters"});
+        if(!confirm_password) return res.status(400).json({status:400, message:"confirm_password is required"});
+        if(password.length < 8 && confirm_password.length < 8) return res.status(400).json({status:400, message:"password should be of 8 characters"});
+        if(password != confirm_password) return res.status(400).json({status:400, message:"password not matched"});
         
         next();
     } catch (error) {

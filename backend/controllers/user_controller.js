@@ -1,11 +1,12 @@
 import users from "../models/user.js"
 import bcrypt from "bcrypt";
 
+
 export const register = async(req,res) => {
     try {
-        const {email,username,password} = req.body;
-        const response = await users.findOne({email}).exec();
-        if(response) return res.status(400).json({status:400, message:"user already registered"});
+        const {email,username,password } = req.body;
+        const checkuser = await users.find({email}).exec();
+        if(checkuser.length) return res.status(400).json({status: 400, message:"user already registered"});
 
         const hashpassword = await bcrypt.hash(password,10);
 
