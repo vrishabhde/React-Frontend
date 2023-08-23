@@ -29,9 +29,9 @@ const Register = () => {
         console.log("post_response Status:", post_response.data.status);
         console.log("post_response Message:", post_response.data.message);
         
-        if (post_response.data.status === 200) {
+        if (post_response.status === 200) {
             alert(post_response.data.message);
-        } else if (post_response.data.status === 400) {
+        } else if (post_response.data.status === 500) {
             alert(post_response.data.message);
         } else {
             alert("Unexpected post_response status: " + post_response.data.status);

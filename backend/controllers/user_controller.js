@@ -31,3 +31,12 @@ export const login = async(req,res) => {
         return res.status(500).json({status:500, message:"unexpected error occured"});
     }
 }
+
+
+// var a = 2;
+// let a=2;
+// const a= 2;
+// console.log(a)  
+ 
+
+
